@@ -4,7 +4,7 @@ import Card from "../UI/Card";
 import "./Search.css";
 
 const Search = React.memo((props) => {
-  const { onLoadIngredient } = props;
+  const { onLoadIngredients } = props;
   const [enteredFilter, setEnteredFilter] = useState("");
   const inputRef = useRef();
 
@@ -29,14 +29,14 @@ const Search = React.memo((props) => {
                 amount: responseData[key].amount,
               });
             }
-            onLoadIngredient(loadedIngredients);
+            onLoadIngredients(loadedIngredients);
           });
       }
     }, 500);
     return () => {
       clearTimeout(timer);
     };
-  }, [enteredFilter, onLoadIngredient, inputRef]);
+  }, [enteredFilter, onLoadIngredients, inputRef]);
 
   return (
     <section className="search">
